@@ -1,0 +1,270 @@
+[
+    {
+        "label": "FunctionNode",
+        "importPath": "parser.ast",
+        "description": "parser.ast",
+        "isExtraImport": true,
+        "detail": "parser.ast",
+        "documentation": {}
+    },
+    {
+        "label": "ReturnNode",
+        "importPath": "parser.ast",
+        "description": "parser.ast",
+        "isExtraImport": true,
+        "detail": "parser.ast",
+        "documentation": {}
+    },
+    {
+        "label": "Token",
+        "importPath": "tokens",
+        "description": "tokens",
+        "isExtraImport": true,
+        "detail": "tokens",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Token",
+        "importPath": "tokens.token",
+        "description": "tokens.token",
+        "isExtraImport": true,
+        "detail": "tokens.token",
+        "documentation": {}
+    },
+    {
+        "label": "new",
+        "importPath": "lexer",
+        "description": "lexer",
+        "isExtraImport": true,
+        "detail": "lexer",
+        "documentation": {}
+    },
+    {
+        "label": "new",
+        "importPath": "lexer",
+        "description": "lexer",
+        "isExtraImport": true,
+        "detail": "lexer",
+        "documentation": {}
+    },
+    {
+        "label": "Parser",
+        "importPath": "parser.parser",
+        "description": "parser.parser",
+        "isExtraImport": true,
+        "detail": "parser.parser",
+        "documentation": {}
+    },
+    {
+        "label": "JSGenerator",
+        "importPath": "generator",
+        "description": "generator",
+        "isExtraImport": true,
+        "detail": "generator",
+        "documentation": {}
+    },
+    {
+        "label": "start_repl",
+        "importPath": "repl",
+        "description": "repl",
+        "isExtraImport": true,
+        "detail": "repl",
+        "documentation": {}
+    },
+    {
+        "label": "compile_to_js",
+        "importPath": "utils",
+        "description": "utils",
+        "isExtraImport": true,
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "JSGenerator",
+        "kind": 6,
+        "importPath": "generator.generator",
+        "description": "generator.generator",
+        "peekOfCode": "class JSGenerator:\n  def __init__(self) -> None:\n    pass\n  def generate(self, node):\n    if isinstance(node, FunctionNode):\n      return f\"function {node.name}() {{\\n {self.generate(node.body)} \\n}}\"\n    elif isinstance(node, ReturnNode):\n      return f\"return {node.value}\"\n    else:\n      raise Exception(f\"Unexcpected node type {type(node)}\")",
+        "detail": "generator.generator",
+        "documentation": {}
+    },
+    {
+        "label": "Lexer",
+        "kind": 6,
+        "importPath": "lexer.lexer",
+        "description": "lexer.lexer",
+        "peekOfCode": "class Lexer:\n  def __init__(self, source) -> None:\n    self.source = source\n    self.currentPosition = 0\n    self.nextPosition = 0\n    self.char = ''\n  def read(self):\n    if self.nextPosition >= len(self.source):\n      self.char = \"EOF\"\n    else:",
+        "detail": "lexer.lexer",
+        "documentation": {}
+    },
+    {
+        "label": "new",
+        "kind": 2,
+        "importPath": "lexer.lexer",
+        "description": "lexer.lexer",
+        "peekOfCode": "def new(src):\n  lexer = Lexer(src)\n  lexer.read()\n  return lexer",
+        "detail": "lexer.lexer",
+        "documentation": {}
+    },
+    {
+        "label": "Ast",
+        "kind": 6,
+        "importPath": "parser.ast",
+        "description": "parser.ast",
+        "peekOfCode": "class Ast:\n  pass\nclass Program(Ast):\n  def __init__(self, package, imports: List[str],\n               declarations: List[Ast]) -> None:\n    self.package = package\n    self.imports = imports\n    self.declarations = declarations\nclass FunctionNode(Ast):\n  def __init__(self, params, name, body, return_type) -> None:",
+        "detail": "parser.ast",
+        "documentation": {}
+    },
+    {
+        "label": "Program",
+        "kind": 6,
+        "importPath": "parser.ast",
+        "description": "parser.ast",
+        "peekOfCode": "class Program(Ast):\n  def __init__(self, package, imports: List[str],\n               declarations: List[Ast]) -> None:\n    self.package = package\n    self.imports = imports\n    self.declarations = declarations\nclass FunctionNode(Ast):\n  def __init__(self, params, name, body, return_type) -> None:\n    self.params = params\n    self.name = name",
+        "detail": "parser.ast",
+        "documentation": {}
+    },
+    {
+        "label": "FunctionNode",
+        "kind": 6,
+        "importPath": "parser.ast",
+        "description": "parser.ast",
+        "peekOfCode": "class FunctionNode(Ast):\n  def __init__(self, params, name, body, return_type) -> None:\n    self.params = params\n    self.name = name\n    self.body = body\n    self.return_type = return_type\nclass StructNode(Ast):\n  def __init__(self, name, fields) -> None:\n    self.name = name\n    self.fields = fields",
+        "detail": "parser.ast",
+        "documentation": {}
+    },
+    {
+        "label": "StructNode",
+        "kind": 6,
+        "importPath": "parser.ast",
+        "description": "parser.ast",
+        "peekOfCode": "class StructNode(Ast):\n  def __init__(self, name, fields) -> None:\n    self.name = name\n    self.fields = fields\nclass VarNode(Ast):\n  def __init__(self, name, type, value) -> None:\n    self.name = name\n    self.type = type\n    self.value = value\nclass IfNode(Ast):",
+        "detail": "parser.ast",
+        "documentation": {}
+    },
+    {
+        "label": "VarNode",
+        "kind": 6,
+        "importPath": "parser.ast",
+        "description": "parser.ast",
+        "peekOfCode": "class VarNode(Ast):\n  def __init__(self, name, type, value) -> None:\n    self.name = name\n    self.type = type\n    self.value = value\nclass IfNode(Ast):\n  def __init__(self, condition, then_block, else_block) -> None:\n    self.condition = condition\n    self.then_block = then_block\n    self.else_block = else_block",
+        "detail": "parser.ast",
+        "documentation": {}
+    },
+    {
+        "label": "IfNode",
+        "kind": 6,
+        "importPath": "parser.ast",
+        "description": "parser.ast",
+        "peekOfCode": "class IfNode(Ast):\n  def __init__(self, condition, then_block, else_block) -> None:\n    self.condition = condition\n    self.then_block = then_block\n    self.else_block = else_block\nclass ForNode(Ast):\n  def __init__(self, init, condition, post, body) -> None:\n    self.init = init\n    self.condition = condition\n    self.post = post",
+        "detail": "parser.ast",
+        "documentation": {}
+    },
+    {
+        "label": "ForNode",
+        "kind": 6,
+        "importPath": "parser.ast",
+        "description": "parser.ast",
+        "peekOfCode": "class ForNode(Ast):\n  def __init__(self, init, condition, post, body) -> None:\n    self.init = init\n    self.condition = condition\n    self.post = post\n    self.body = body\nclass BinaryNode(Ast):\n  def __init__(self, left, op, right):\n    self.left = left\n    self.op = op",
+        "detail": "parser.ast",
+        "documentation": {}
+    },
+    {
+        "label": "BinaryNode",
+        "kind": 6,
+        "importPath": "parser.ast",
+        "description": "parser.ast",
+        "peekOfCode": "class BinaryNode(Ast):\n  def __init__(self, left, op, right):\n    self.left = left\n    self.op = op\n    self.right = right\nclass ClosureNode(Ast):\n  def __init__(self, params, body) -> None:\n    self.params = params\n    self.body = body\nclass Literal(Ast):",
+        "detail": "parser.ast",
+        "documentation": {}
+    },
+    {
+        "label": "ClosureNode",
+        "kind": 6,
+        "importPath": "parser.ast",
+        "description": "parser.ast",
+        "peekOfCode": "class ClosureNode(Ast):\n  def __init__(self, params, body) -> None:\n    self.params = params\n    self.body = body\nclass Literal(Ast):\n  def __init__(self, value) -> None:\n    self.value = value\nclass Identifier(Ast):\n  def __init__(self, value) -> None:\n    self.value = value",
+        "detail": "parser.ast",
+        "documentation": {}
+    },
+    {
+        "label": "Literal",
+        "kind": 6,
+        "importPath": "parser.ast",
+        "description": "parser.ast",
+        "peekOfCode": "class Literal(Ast):\n  def __init__(self, value) -> None:\n    self.value = value\nclass Identifier(Ast):\n  def __init__(self, value) -> None:\n    self.value = value\nclass ReturnNode(Ast):\n  def __init__(self, value) -> None:\n    self.value = value",
+        "detail": "parser.ast",
+        "documentation": {}
+    },
+    {
+        "label": "Identifier",
+        "kind": 6,
+        "importPath": "parser.ast",
+        "description": "parser.ast",
+        "peekOfCode": "class Identifier(Ast):\n  def __init__(self, value) -> None:\n    self.value = value\nclass ReturnNode(Ast):\n  def __init__(self, value) -> None:\n    self.value = value",
+        "detail": "parser.ast",
+        "documentation": {}
+    },
+    {
+        "label": "ReturnNode",
+        "kind": 6,
+        "importPath": "parser.ast",
+        "description": "parser.ast",
+        "peekOfCode": "class ReturnNode(Ast):\n  def __init__(self, value) -> None:\n    self.value = value",
+        "detail": "parser.ast",
+        "documentation": {}
+    },
+    {
+        "label": "Parser",
+        "kind": 6,
+        "importPath": "parser.parser",
+        "description": "parser.parser",
+        "peekOfCode": "class Parser:\n  def __init__(self, tokens) -> None:\n    self.tokens = tokens\n    self.pos = 0\n  def parse(self):\n    package = self.parse_package()\n    imports = self.parse_imports()\n    return self.start_parse()\n  def start_parse(self):\n    return self.parse_function()",
+        "detail": "parser.parser",
+        "documentation": {}
+    },
+    {
+        "label": "start_repl",
+        "kind": 2,
+        "importPath": "repl.repl",
+        "description": "repl.repl",
+        "peekOfCode": "def start_repl():\n  while True:\n    print(PROMPT, end=\" \")\n    line = input()\n    print(\"total length\", len(line))\n    if line == \"exit\":\n      break\n    lexer = new(line)\n    while True:\n      tok = lexer.next_token()",
+        "detail": "repl.repl",
+        "documentation": {}
+    },
+    {
+        "label": "PROMPT",
+        "kind": 5,
+        "importPath": "repl.repl",
+        "description": "repl.repl",
+        "peekOfCode": "PROMPT = \">>>\"\ndef start_repl():\n  while True:\n    print(PROMPT, end=\" \")\n    line = input()\n    print(\"total length\", len(line))\n    if line == \"exit\":\n      break\n    lexer = new(line)\n    while True:",
+        "detail": "repl.repl",
+        "documentation": {}
+    },
+    {
+        "label": "Token",
+        "kind": 6,
+        "importPath": "tokens.token",
+        "description": "tokens.token",
+        "peekOfCode": "class Token:\n  def __init__(self, type, value) -> None:\n    self.type = type\n    self.value = value\n  def __repr__(self) -> str:\n    return f\"{self.type}: {self.value}\"",
+        "detail": "tokens.token",
+        "documentation": {}
+    },
+    {
+        "label": "compile_to_js",
+        "kind": 2,
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "peekOfCode": "def compile_to_js(code):\n  # generate tokens\n  lexer = new(code)\n  tokens = lexer.tokenize()\n  # parse to create ast\n  parser = Parser(tokens)\n  ast = parser.parse()\n  # generate js code from ast\n  js_generator = JSGenerator()\n  js = js_generator.generate(ast)",
+        "detail": "utils.utils",
+        "documentation": {}
+    }
+]
